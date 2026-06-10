@@ -63,5 +63,3 @@ python ad_campaign_classification.py
 - **الملف المستخدم:** `ad_campaign_data.csv` (مستخرَج من `archive (1).zip`).
 - **الأعمدة المستخدمة:** `age`, `gender`, `impressions`, `clicks`, `conversions`.
 
-> ضع هنا رابط صفحة مجموعة البيانات على Kaggle عند التسليم النهائي، مثال:
-> `https://www.kaggle.com/datasets/<dataset-slug>`
