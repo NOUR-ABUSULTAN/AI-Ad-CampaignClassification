@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+
 # مشروع الذكاء الاصطناعي: توقّع تحوّل المستخدم (Conversions) من بيانات الحملات الإعلانية
 # مقارنة بين ثلاث خوارزميات تصنيف: SVM / Decision Tree / Random Forest
 # البيئة: Google Colab + Python + scikit-learn
@@ -10,21 +10,21 @@ from sklearn.svm import SVC
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier
 
-# 1) فك ضغط ملف البيانات المحمّل من Kaggle واستخراج ملف الـ CSV
+
 with zipfile.ZipFile('archive (1).zip', 'r') as zip_ref:
     zip_ref.extractall()
 
-# 2) قراءة البيانات
+
 df = pd.read_csv('ad_campaign_data.csv')
 
-# 3) اختيار الميزات (Features) والهدف (Target)
+
 X = df[['age', 'gender', 'impressions', 'clicks']]
 Y = df['conversions']
 
-# 4) تقسيم البيانات: 80% تدريب و20% اختبار
+
 X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.2, random_state=42)
 
-# 5) التدريب والمقارنة
+
 print("الدقة هي :", SVC(kernel='linear').fit(X_train, Y_train).score(X_test, Y_test))
 
 svm_model = SVC(kernel='linear').fit(X_train, Y_train)
