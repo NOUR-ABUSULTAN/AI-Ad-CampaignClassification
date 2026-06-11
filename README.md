@@ -1,59 +1,127 @@
-# AI Project: Ad Campaign Conversion Prediction
-## Applied Machine Learning for Mobile and Intelligent Systems
 
-### Project Overview
-This project focuses on predicting whether a user will convert into a customer based on advertising campaign data. The project applies Machine Learning classification algorithms and compares their performance to identify the most suitable model for Mobile Computing applications.
-The objective is to build an efficient prediction model that can run with minimal computational resources while maintaining high accuracy.
 
-### Project Information
-* **Course:** Artificial Intelligence
-* **Specialization:** Mobile Computing
-* **Project Type:** Tabular Classification
-* **Programming Language:** Python 3.12
-* **Development Environment:** Google Colab
-* **Machine Learning Library:** Scikit-learn
+# مشروع الذكاء الاصطناعي: التنبؤ بنجاح التحويلات الإعلانية للحملات الرقمية
 
----
+## تطبيق تعلم الآلة في الأنظمة الذكية والحوسبة المتنقلة
 
-### Dataset Description
-The dataset contains real historical information related to digital advertising campaign performance, obtained from Kaggle and programmatically extracted within the session.
+### 📌 نظرة عامة على المشروع (Project Overview)
 
-#### Target Variable
-* `conversions` (Binary indicator: 1 if the user converted/purchased, 0 otherwise)
+يركز هذا المشروع على التنبؤ بما إذا كان مستخدم وسائل التواصل الاجتماعي سيتحول إلى عميل حقيقي (يقوم بالشراء أو التفاعل) بناءً على بيانات الأداء التاريخية للحملات الإعلانية. يطبق المشروع خوارزميات تصنيف متعددة في تعلم الآلة (Machine Learning) ويقارن بين أدائها لتحديد النموذج الأكثر ملاءمة لتطبيقات الحوسبة المتنقلة (Mobile Computing).
 
-#### Features Used
-* `age` - User age demographics.
-* `gender` - User gender.
-* `impressions` - The number of times an ad was displayed to the user.
-* `clicks` - The actual number of clicks on the ad link.
+الهدف الأساسي هو بناء نموذج تنبؤ عالي الكفاءة يمكنه العمل بأقل قدر ممكن من الموارد الحسابية (ذاكرة ومعالجة) مع الحفاظ على دقة تنبؤية فائقة.
 
-> **Mobile Design Choice:** These features were strictly selected because they provide high predictive utility while completely isolating heavy or unnecessary database columns, making the final model lightweight for mobile application deployment.
+### 📋 معلومات المشروع (Project Information)
+
+* **المساق:** الذكاء الاصطناعي (Artificial Intelligence)
+* **التخصص الدقيق:** الحوسبة المتنقلة (Mobile Computing)
+* **نوع المشروع:** تصنيف جداول البيانات (Tabular Classification)
+* **لغة البرمجة:** بايثون (Python 3.12)
+* **بيئة التطوير:** جوجل كولاب (Google Colab)
+* **المكتبة البرمجية المستخدمة:** Scikit-learn
 
 ---
 
-### Project Pipeline & Methodology
-1. **Data Collection:** The dataset is fetched from Kaggle and extracted from the compressed file `archive(1).zip` directly into the environment path to retrieve `ad_campaign_data.csv`.
-2. **Data Preprocessing & Feature Selection:** High-dimensional and identifier columns (IDs, Dates) were removed to drastically reduce memory usage during execution on constrained edge devices.
-3. **Train-Test Split:** The dataset was partitioned into an 80% training block for optimization and a 20% testing block for independent validation.
-   * `test_size = 0.2`
-   * `random_state = 42` (Ensuring experimental reproducibility)
-4. **Model Training:** Three foundational classifiers were trained:
-   * **Linear Support Vector Machine (Linear SVM)**
-   * **Decision Tree Classifier**
-   * **Random Forest Ensemble**
+### 📊 وصف مجموعة البيانات (Dataset Description)
+
+تحتوي مجموعة البيانات على معلومات حقيقية متعلقة بأداء الحملات الإعلانية الرقمية، تم الحصول عليها من منصة كاجل (Kaggle) وفك ضغطها برمجياً داخل بيئة التشغيل.
+
+#### المتغير المستهدف للتوقع (Target Variable)
+
+* `conversions` (قيمة ثنائية: 1 إذا استجاب المستخدم واشترى، 0 خلاف ذلك)
+
+#### الميزات المستخدمة في التدريب (Features Used)
+
+* `age` - الفئة العمرية للمستخدمين.
+* `gender` - جنس المستخدم.
+* `impressions` - عدد مرات ظهور الإعلان للمستخدم.
+* `clicks` - عدد النقرات الفعلية للمستخدم على الإعلان.
+
+> **💡 قرار هندسي متعلق بالموبايل:** تم اختيار هذه الميزات تحديداً لأنها توفر أعلى قيمة تباين وقدرة على التنبؤ بسلوك المستخدم، مع عزل وإلغاء الأعمدة المعقدة وغير الضرورية، مما يحافظ على خفة وزن النموذج النهائي ليكون مثالياً للنشر على الهواتف المحمولة.
 
 ---
 
-### Experimental Results & Model Comparison
+### ⚙️ منهجية العمل ومراحل المشروع (Methodology)
 
-| Algorithm Implemented | Classification Accuracy | Mobile System Suitability |
-| :--- | :---: | :--- |
-| **Support Vector Machine (Linear SVM)** | **100.00% (1.0)** | **Highly Recommended (Optimal)** |
-| **Random Forest Classifier** | **99.84% (0.9984)** | Excessive Memory & Tree Footprint |
-| **Decision Tree Classifier** | **99.74% (0.9974)** | Low Stability in Constraint Nodes |
+1. **جمع البيانات:** تم جلب البيانات من Kaggle واستخراجها برمجياً من الملف المضغوط `archive(1).zip` للوصول إلى ملف البيانات الأساسي `ad_campaign_data.csv`.
+2. **معالجة البيانات وتصفية الميزات:** تم حذف أعمدة المعرّفات والتواريخ (IDs, Dates) لتقليل استهلاك الذاكرة المؤقتة أثناء التشغيل على الأجهزة ذات الموارد المحدودة (Edge Devices).
+3. **تقسيم البيانات (Train-Test Split):** تم تقسيم البيانات بنسبة 80% لكتلة التدريب والتعلم، و20% لكتلة الاختبار والتحقق المستقل.
+* نسبة الاختبار: `test_size = 0.2`
+* حالة العشوائية الثابتة: `random_state = 42` (لضمان ثبات النتائج عند إعادة التشغيل)
 
-#### Definitive Best Model Justification
-The Linear SVM model achieved the highest absolute accuracy of **100%**. 
-From a Mobile Computing perspective, this perfectly matches our design criteria:
-* **Mathematical Simplicity:** After training, the SVM reduces to a single, lightweight linear decision equation rather than holding heavy hierarchical structures in memory.
-*
+
+4. **تدريب النماذج:** تم تطبيق وتدريب ثلاث خوارزميات تصنيفية أساسية:
+* **آلة متجه الدعم الخطي (Linear Support Vector Machine - SVM)**
+* **شجرة القرار (Decision Tree Classifier)**
+* **الغابات العشوائية (Random Forest Classifier)**
+
+
+
+---
+
+### 📉 النتائج التجريبية ومقارنة الأداء (Experimental Results)
+
+| الخوارزمية المطبقة | دقة التصنيف المحققة (Accuracy) | مدى الملاءمة لأنظمة الموبايل |
+| --- | --- | --- |
+| **آلة متجه الدعم (Linear SVM)** | **100.00% (1.0)** | **موصى به بشدة (الأمثل كفاءة ودقة)** |
+| **الغابات العشوائية (Random Forest)** | **99.84% (0.9984)** | غير مستحب (استهلاك عالي للذاكرة وحجم الأشجار كبير) |
+| **شجرة القرار (Decision Tree)** | **99.74% (0.9974)** | استقرار منخفض عند تفرع العقد تحت القيود |
+
+#### المبرر الهندسي لاختيار النموذج الأفضل (Best Model Justification)
+
+حقق نموذج الـ **Linear SVM** أعلى دقة مطلقة بنسبة **100%**.
+ومن منظور هندسة الحوسبة المتنقلة، فإن هذا النموذج يطابق معايير التصميم القياسية لدينا تماماً:
+
+* **البساطة الرياضية:** بعد اكتمال التدريب، يختزل الـ SVM إلى معادلة خطية بسيطة جداً بدلاً من الاحتفاظ بهياكل شجرية معقدة وضخمة داخل ذاكرة الهاتف المحمول.
+* **المساحة التخزينية:** الحجم النهائي للملف صغير جداً (يقاس بالكيلوبايت)، مما يضمن عدم استنزاف بطارية الهاتف أو إجهاد المعالج (CPU) أثناء عملية التنبؤ الفوري المحلي.
+* **التكامل مع فلاتر (Flutter Integration):** النموذج مثالي جداً لتحويله إلى الصيغة الثنائية الخفيفة **TFLite (TensorFlow Lite)**، مما يتيح تشغيله محلياً (On-device AI) داخل تطبيقات **Flutter** ليعمل أوفلاين تماماً ودون الحاجة لاتصال بالإنترنت أو طلب سيرفر خارجي.
+
+---
+
+### 💻 التثبيت وتشغيل النظام (Installation & Running)
+
+لتثبيت المكتبات البرمجية اللازمة في البيئة المحلية أو السيرفر، نفذي الأمر التالي:
+
+```bash
+pip install pandas scikit-learn
+
+```
+
+#### التشغيل عبر بيئة Google Colab (الموصى به)
+
+1. ارفعي الملف المضغوط الخاص بالبيانات واسمه `archive(1).zip` في قائمة الملفات الجانبية للكولاب.
+2. انسخي الكود الموحد من ملف `ad_campaign_classification.py` وضعيه في خلية برمجية جديدة (Code Cell).
+3. اضغطي على زر التشغيل (المثلث)؛ حيث سيتولى الكود فك الضغط تلقائياً، واقتطاع الميزات، والتدريب، وطباعة أرقام الدقة وراء بعضها.
+
+#### التشغيل عبر الجهاز المحلي (Local Execution)
+
+```bash
+python ad_campaign_classification.py
+
+```
+
+*ملاحظة: تأكدي من وجود الملف المضغوط `archive(1).zip` أو ملف الـ CSV المستخرج `ad_campaign_data.csv` في نفس المجلد الذي يحتوي على ملف الكود.*
+
+---
+
+### 🔗 مرجع مجموعة البيانات (Dataset Reference)
+
+* **مصدر البيانات:** موقع كاجل العالمي – Ad Campaign Performance Dataset
+* **الرابط المرجعي:** `https://www.kaggle.com/datasets/loveall/appliances-energy-prediction`
+
+### 🚀 التحسينات المستقبلية المقترحة (Future Improvements)
+
+* دمج ميزة التعلم المستمر والتحديث المحلي على الهاتف (Federated Learning) بناءً على سلوك المستخدم الفعلي.
+* تطبيق تقنيات كمية البيانات الـ 8 بت (Post-training quantization) لتقليص حجم الموديل بشكل أكبر.
+* بناء واجهة مستخدم كاملة عبر إطار عمل **Flutter** وتكاملها مع مكتبة TFLite لاستعراض التنبؤات الذكية بشكل مرئي وفوري على الجوال.
+
+---
+
+**إعداد الطالبة:** نور محمد حسن أبو سلطان
+
+**التخصص الدقيق:** الحوسبة المتنقلة (Mobile Computing)
+
+**الكلية:** كلية الهندسة وتكنولوجيا المعلومات
+
+**الجامعة:** جامعة الإسراء
+
+**تاريخ التسليم:** 20 يونيو 2026 م
