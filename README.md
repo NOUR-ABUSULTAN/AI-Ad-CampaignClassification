@@ -106,8 +106,7 @@ python ad_campaign_classification.py
 ### 🔗 مرجع مجموعة البيانات (Dataset Reference)
 
 * **مصدر البيانات:** موقع كاجل العالمي – Ad Campaign Performance Dataset
-* **الرابط المرجعي:** `https://www.kaggle.com/datasets/loveall/appliances-energy-prediction`
-
+* **الرابط المرجعي:** https://www.kaggle.com/datasets/ziya07/social-media-ad-engagement-dataset
 ### 🚀 التحسينات المستقبلية المقترحة (Future Improvements)
 
 * دمج ميزة التعلم المستمر والتحديث المحلي على الهاتف (Federated Learning) بناءً على سلوك المستخدم الفعلي.
