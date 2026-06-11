@@ -1,65 +1,59 @@
-# مشروع الذكاء الاصطناعي — توقّع تحوّل المستخدم (Ad Campaign Conversions)
+# AI Project: Ad Campaign Conversion Prediction
+## Applied Machine Learning for Mobile and Intelligent Systems
 
-مشروع تصنيف (Classification) يتوقّع ما إذا كان المستخدم سيتحوّل إلى مشترٍ (Conversion)
-اعتماداً على بيانات الحملات الإعلانية، مع مقارنة بين ثلاث خوارزميات لاختيار الأنسب
-للتطبيق على الأجهزة المحمولة (Mobile Computing).
+### Project Overview
+This project focuses on predicting whether a user will convert into a customer based on advertising campaign data. The project applies Machine Learning classification algorithms and compares their performance to identify the most suitable model for Mobile Computing applications.
+The objective is to build an efficient prediction model that can run with minimal computational resources while maintaining high accuracy.
 
----
-
-## محتويات التسليم
-
-| الملف | الوصف |
-|------|-------|
-| `ad_campaign_classification.py` | الكود المصدري الكامل للمشروع |
-| `README.md` | هذا الملف — وصف المشروع وطريقة التشغيل ومراجع البيانات |
-| `تقرير_المشروع.docx` | التقرير الكامل (6–10 صفحات) |
-| `عرض_المشروع.pptx` | العرض التقديمي للمناقشة |
+### Project Information
+* **Course:** Artificial Intelligence
+* **Specialization:** Mobile Computing
+* **Project Type:** Tabular Classification
+* **Programming Language:** Python 3.12
+* **Development Environment:** Google Colab
+* **Machine Learning Library:** Scikit-learn
 
 ---
 
-## نظرة عامة
+### Dataset Description
+The dataset contains real historical information related to digital advertising campaign performance, obtained from Kaggle and programmatically extracted within the session.
 
-- **اللغة / الأدوات:** Python، مكتبة scikit-learn، تشغيل على Google Colab.
-- **نوع المسألة:** تصنيف ثنائي/متعدد (Classification).
-- **الهدف (Target):** العمود `conversions`.
-- **الميزات (Features):** `age`, `gender`, `impressions`, `clicks`.
+#### Target Variable
+* `conversions` (Binary indicator: 1 if the user converted/purchased, 0 otherwise)
 
-## مراحل العمل
+#### Features Used
+* `age` - User age demographics.
+* `gender` - User gender.
+* `impressions` - The number of times an ad was displayed to the user.
+* `clicks` - The actual number of clicks on the ad link.
 
-1. **استيراد البيانات:** فك ضغط `archive (1).zip` واستخراج `ad_campaign_data.csv` وقراءته عبر `pandas`.
-2. **تجهيز الميزات:** اختيار الأعمدة المؤثرة وعزل غير الضروري لتناسب موارد الهاتف.
-3. **تقسيم البيانات:** 80% تدريب و20% اختبار (`test_size=0.2`, `random_state=42`).
-4. **التدريب والمقارنة:** تشغيل SVM و Decision Tree و Random Forest وحساب الدقة.
-
-## طريقة التشغيل
-
-### على Google Colab
-1. ارفع ملف البيانات المضغوط `archive (1).zip` إلى بيئة Colab.
-2. شغّل خلية الكود في `ad_campaign_classification.py`.
-
-### محلياً
-```bash
-pip install pandas scikit-learn
-python ad_campaign_classification.py
-```
-> ملاحظة: تأكد من وجود `archive (1).zip` (أو `ad_campaign_data.csv`) في نفس مجلد التشغيل.
-
-## النتائج
-
-| الخوارزمية | الدقة (Accuracy) |
-|-----------|------------------|
-| SVM (linear) | 100% (1.0) |
-| Random Forest | 99.84% (0.99845) |
-| Decision Tree | 99.74% (0.9974) |
-
-تفوّقت SVM الخطية بالدقة الكاملة، وهي كذلك الأخف وزناً بعد التدريب، مما يجعلها الخيار
-الأنسب للنشر على الأجهزة المحمولة (On-device) بأقل استهلاك للموارد.
+> **Mobile Design Choice:** These features were strictly selected because they provide high predictive utility while completely isolating heavy or unnecessary database columns, making the final model lightweight for mobile application deployment.
 
 ---
 
-## مراجع البيانات (Dataset References)
+### Project Pipeline & Methodology
+1. **Data Collection:** The dataset is fetched from Kaggle and extracted from the compressed file `archive(1).zip` directly into the environment path to retrieve `ad_campaign_data.csv`.
+2. **Data Preprocessing & Feature Selection:** High-dimensional and identifier columns (IDs, Dates) were removed to drastically reduce memory usage during execution on constrained edge devices.
+3. **Train-Test Split:** The dataset was partitioned into an 80% training block for optimization and a 20% testing block for independent validation.
+   * `test_size = 0.2`
+   * `random_state = 42` (Ensuring experimental reproducibility)
+4. **Model Training:** Three foundational classifiers were trained:
+   * **Linear Support Vector Machine (Linear SVM)**
+   * **Decision Tree Classifier**
+   * **Random Forest Ensemble**
 
-- **المصدر:** منصة Kaggle — مجموعة بيانات حملات إعلانية (Ad Campaign Performance Dataset).
-- **الملف المستخدم:** `ad_campaign_data.csv` (مستخرَج من `archive (1).zip`).
-- **الأعمدة المستخدمة:** `age`, `gender`, `impressions`, `clicks`, `conversions`.
+---
 
+### Experimental Results & Model Comparison
+
+| Algorithm Implemented | Classification Accuracy | Mobile System Suitability |
+| :--- | :---: | :--- |
+| **Support Vector Machine (Linear SVM)** | **100.00% (1.0)** | **Highly Recommended (Optimal)** |
+| **Random Forest Classifier** | **99.84% (0.9984)** | Excessive Memory & Tree Footprint |
+| **Decision Tree Classifier** | **99.74% (0.9974)** | Low Stability in Constraint Nodes |
+
+#### Definitive Best Model Justification
+The Linear SVM model achieved the highest absolute accuracy of **100%**. 
+From a Mobile Computing perspective, this perfectly matches our design criteria:
+* **Mathematical Simplicity:** After training, the SVM reduces to a single, lightweight linear decision equation rather than holding heavy hierarchical structures in memory.
+*
